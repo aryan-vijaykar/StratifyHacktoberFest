@@ -12,7 +12,7 @@ The project workspace is divided into a decoupled **FastAPI ASGI Backend** and a
 
 ### A. Backend Architecture & API Routes
 
-The backend uses **FastAPI** with async router endpoints. Database transactions are isolated per request using SQLAlchemy async sessions.
+The backend uses **FastAPI** with async router endpoints. Database transactions are isolated per request using SQLAlchemy async session.
 
 #### 1. Versioning Protocol
 All api controllers are registered under the version prefix `/api/v1` in `app/main.py`:
