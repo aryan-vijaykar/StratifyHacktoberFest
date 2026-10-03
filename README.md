@@ -8,64 +8,6 @@ Stratify (SME OS) is an enterprise-grade, local-AI-driven Business Operating Sys
 
 The project workspace is divided into a decoupled **FastAPI ASGI Backend** and a **Vite React Single Page Application (SPA) Frontend**:
 
-```text
-stratify/
-â”œâ”€â”€ README.md                   # Complete architectural & operational specification
-â”œâ”€â”€ design.md                   # Locked design system (tokens, CSS variables)
-â”œâ”€â”€ package-lock.json           # Root lock file
-â”œâ”€â”€ skills-lock.json            # Lock file for agent skills
-â”œâ”€â”€ docs/                       # Project documentation
-â”‚   â””â”€â”€ decisions/              # Architectural Decision Records (ADRs)
-â”‚       â””â”€â”€ 0001-multi-agent-decision-engine.md
-â”œâ”€â”€ backend/                    # FastAPI ASGI Python application
-â”‚   â”œâ”€â”€ app/                    # Main source code package
-â”‚   â”‚   â”œâ”€â”€ main.py             # App entrypoint, lifespan lifecycle, middleware, prefix registry
-â”‚   â”‚   â”œâ”€â”€ config.py           # Environment variables configuration management (Pydantic settings)
-â”‚   â”‚   â”œâ”€â”€ database.py         # SQLAlchemy connection engine & DB session dependencies
-â”‚   â”‚   â”œâ”€â”€ models/             # Database ORM entity mapping classes
-â”‚   â”‚   â”‚   â”œâ”€â”€ business.py     # Entities: Company, Customer, Supplier, Product, Invoice, Sales, Inventory
-â”‚   â”‚   â”‚   â””â”€â”€ history.py      # Audits: BusinessEvent, RecommendationHistory, DecisionHistory
-â”‚   â”‚   â”œâ”€â”€ schemas/            # Pydantic v2 validation data transfer objects DTOs
-â”‚   â”‚   â”‚   â”œâ”€â”€ business.py     # Base, Create, Update, and Schema properties for business entities
-â”‚   â”‚   â”‚   â”œâ”€â”€ predictive.py   # Forecast return formats (Prediction, Confidence, Feature weights)
-â”‚   â”‚   â”‚   â””â”€â”€ decision.py     # Simulation input/outputs & recommendation summaries
-â”‚   â”‚   â”œâ”€â”€ routers/            # Versioned API routes mapping controller actions
-â”‚   â”‚   â”‚   â”œâ”€â”€ business.py     # CRUD controllers for customers, suppliers, products, invoices, sales
-â”‚   â”‚   â”‚   â”œâ”€â”€ dashboard.py    # Analytics dashboards, alerts, business health scores, timeline events
-â”‚   â”‚   â”‚   â”œâ”€â”€ ai.py           # Local LLM chat (Ollama status) and executive briefs
-â”‚   â”‚   â”‚   â”œâ”€â”€ forecast.py     # Time-series regression forecasting models
-â”‚   â”‚   â”‚   â”œâ”€â”€ risk.py         # Volatility, late-payment, and delivery delay risk estimators
-â”‚   â”‚   â”‚   â”œâ”€â”€ decision.py     # Multi-Agent consensus, explanation audit, digital twin simulation
-â”‚   â”‚   â”‚   â””â”€â”€ upload.py       # Async document ingestors
-â”‚   â”‚   â”œâ”€â”€ services/           # Business domain processing engines
-â”‚   â”‚   â”‚   â”œâ”€â”€ agent_engine.py # CEO orchestration of 6 domain expert agents
-â”‚   â”‚   â”‚   â”œâ”€â”€ business_memory.py # Episodic contextual database retriever
-â”‚   â”‚   â”‚   â”œâ”€â”€ doc_intelligence.py # Parser triggers mapping PDF/XLSX text to JSON DTOs
-â”‚   â”‚   â”‚   â”œâ”€â”€ ollama_client.py # Local Ollama LLM integration client
-â”‚   â”‚   â”‚   â”œâ”€â”€ prediction_engine.py # Regression analytics models (Revenue, Cash flow, Demand)
-â”‚   â”‚   â”‚   â””â”€â”€ simulation_engine.py # Volatility Twin what-if math multipliers
-â”‚   â”‚   â””â”€â”€ utils/              # Utility helpers
-â”‚   â”‚       â”œâ”€â”€ helpers.py      # Common helper functions
-â”‚   â”‚       â””â”€â”€ prompt_builder.py # Context-aware prompt template builder
-â”‚   â”œâ”€â”€ requirements.txt        # Backend dependencies
-â”‚   â”œâ”€â”€ sme_platform.db         # SQLite transactional database
-â”‚   â””â”€â”€ docker-compose.yml      # Multi-service local launch (FastAPI, Ollama)
-â””â”€â”€ frontend/                   # React 19 + Vite + TypeScript Single Page App
-    â”œâ”€â”€ src/                    # App source code
-    â”‚   â”œâ”€â”€ main.tsx            # Main App entrypoint
-    â”‚   â”œâ”€â”€ App.tsx             # Interactive dashboard, view states, telemetry charts, Chat panels
-    â”‚   â”œâ”€â”€ api.ts              # Axios api client integration
-    â”‚   â”œâ”€â”€ index.css           # Global custom typography, glassmorphism, scrollbars
-    â”‚   â””â”€â”€ App.css             # Specific layout styling
-    â”œâ”€â”€ public/                 # Static assets directory
-    â”œâ”€â”€ index.html              # Shell HTML template
-    â”œâ”€â”€ package.json            # Frontend script actions & dependency list
-    â”œâ”€â”€ tsconfig.json           # TypeScript configuration
-    â””â”€â”€ vite.config.ts          # Vite build tool configuration
-```
-
----
-
 ## 2. Decoupled Architecture Specifications
 
 ### A. Backend Architecture & API Routes
