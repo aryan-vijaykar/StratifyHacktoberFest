@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-07-13",
+    "macrostructure": "Bento Grid / Workbench",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / neutral",
+    "vibe": "minimalistic, professional monochrome",
+    "enrichment": "E5 inline SVG page transitions",
+    "brief": "Minimalistic white & black theme redesign with smooth page transitions"
+  },
+  {
+    "date": "2026-07-12",
+    "macrostructure": "Bento Grid / Workbench",
+    "theme": "custom",
+    "theme_axes": "dark / mono / cool",
+    "vibe": "industrial precision, dark slate-teal, technical",
+    "enrichment": "E5 hand-built SVG & Sparklines",
+    "brief": "SME OS Console Overhaul with Interactive Telemetry"
+  }
+]
